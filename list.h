@@ -3,7 +3,7 @@
 
 typedef struct
 {
-    char name[20]; //Members of the contact.
+    char* name; //Members of the contact.
     char bday[8]; //31122000 format
     char phone[10]; //9151234567 format
 	
@@ -20,7 +20,7 @@ typedef struct
 } list;
 
 //Node Functions
-node* newNode(char name[], char b[], char p[]);
+node* newNode(char* name, char b[], char p[]);
 void  setName(node* n, char name[]); //Names changed to match list.c ; 'name' used because 'n' is used by node*.
 void  setBday(node* n, char b[]);
 void  setPhone(node* n, char p[]);

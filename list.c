@@ -3,18 +3,24 @@
 #include "list.h"
 
 //Node Functions
-node* newNode(char name[], char b[], char p[]){
+node* newNode(char* name, char b[], char p[]){
 	node* n = (node*)malloc(sizeof(node)); //malloc returns void pointer, we cast it to node pointer
-	
-	for(int i = 0; i < 20; i++){ //Copy given char array to n's char array, since there cannot be an assigment to a character array.
-        n -> name[i] = name[i];
-	}
-    
-    for(int i = 0; i < 20; i++){ //Fill up the empty indexes of the array with spaces.
-        if(n -> name[i] == '/0'){
-            n -> name[i] = " ";
-        }
+
+    short i = 0; /*Clone the given name to n's member----------------*/
+    while(name[i]!= '\0'){
+        i++;
     }
+
+    i++;
+
+    n -> name = (char*)malloc(i*sizeof(char));
+    i = 0;
+
+    while(*name){
+        n -> name[i] = *name;
+        i++;
+        name++;
+    }/*--------------------------------------------------------------*/
 
 	for(int i = 0; i < 8; i++){
 		n -> bday[i] = b[i];
@@ -27,11 +33,25 @@ node* newNode(char name[], char b[], char p[]){
 	return n; 
 }
 
-void  setName(node* n, char name[])
+void  setName(node* n, char* name)
 {
-	for(int i = 0; i < 20; i++){
-		n -> name[i] = name[i];
-	}
+    short i = 0;
+    
+    while(name[i]!= '\0'){
+        i++;
+    }
+
+    i++;
+
+    n -> name = (char*)malloc(i*sizeof(char));
+    i = 0;
+
+    while(*name){
+        n -> name[i] = *name;
+        i++;
+        name++;
+    }
+
 }
 
 void  setBday(node* n, char b[])
@@ -197,21 +217,9 @@ void printEntries(list* l){ //Print L's entries.
 }
 
 void printAll(node* n){
-    
-    printf("\n Name: "); 
-    for(int i = 0; i < 20; i++){ //Print char array 'name'
-        printf("%c", n -> name[i]);
-    }
-
-    printf("\n Birthday: ");
-    for(int i = 0; i < 8; i++){ //Print char array 'bday'
-        printf("%c", n -> bday[i]);
-    }
-
-    printf("\n Phone: ");
-    for(int i = 0; i < 10; i++){
-        printf("%c", n -> phone[i]); //Print char array 'phone'
-    }
+    printName(n);
+    printBday(n);
+    printPhone(n);
 }
 
 void printMember(node* n, char choice){ //Prints 'A' all contact info of a node; 'N' name, 'B' Birthday; 'P' phone.
@@ -224,8 +232,10 @@ void printMember(node* n, char choice){ //Prints 'A' all contact info of a node;
 
 void printName(node* n){
     printf("\n Name: "); 
-    for(int i = 0; i < 20; i++){ //Print char array 'name'
+    int i = 0;
+    while(n -> name[i] != '\0'){
         printf("%c", n -> name[i]);
+        i++;
     }
 }
 
