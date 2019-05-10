@@ -3,11 +3,11 @@
 #include "list.h"
 
 //Node Functions
-node* newNode(char n[], char b[], char p[]){
+node* newNode(char name[], char b[], char p[]){
 	node* n = (node*)malloc(sizeof(node)); //malloc returns void pointer, we cast it to node pointer
 	
-	for(int i = 0; i < 20; i++){
-		n -> name[i] = n[i];
+	for(int i = 0; i < 20; i++){ //Copy given char array to n's char array.
+		n -> name[i] = name[i];
 	}
 
 	for(int i = 0; i < 8; i++){
@@ -21,16 +21,25 @@ node* newNode(char n[], char b[], char p[]){
 	return n; //ALWAYS RETURN data type
 }
 
-void  setName(node* n, char n[])
+void  setName(node* n, char name[])
 {
 	for(int i = 0; i < 20; i++){
-		n -> name[i] = n[i];
+		n -> name[i] = name[i];
 	}
 }
 
-void  setScore(node* n, int s)
+void  setBday(node* n, char b[])
 {
-	n->score = s;
+    for(int i = 0; i < 8 ; i++){
+		n -> bday[i] = b[i];
+	}
+}
+
+void  setPhone(node* n, char p[])
+{
+    for(int i = 0; i < 10 ; i++){
+		n -> phone[i] = p[i];
+	}
 }
 
 void  setNext(node* n, node* nx)
@@ -38,19 +47,24 @@ void  setNext(node* n, node* nx)
 	n->next = (struct node*)nx;
 }
 
-char  getGrade(node* n)
+char  getName(node* n) //NEED TO CHANGE RETURN TYPE
 {
-	return n->grade;
+	return n->name;
 }
 
-int   getScore(node* n)
+char   getBday(node* n)
 {
-	return n->score;
+	return n-> bday;
+}
+
+char   getPhone(node* n)
+{
+	return n-> phone;
 }
 
 node* getNext(node* n)
 {
-	return (node*)n->next;
+	return (node*) n-> next;
 }
 
 //List Functions
