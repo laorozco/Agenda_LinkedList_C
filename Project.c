@@ -17,7 +17,7 @@ int main
     
     switch(input){
       case "add": 
-            char na[20];
+            char name[20];
             char b[8];
             char p[10];
           
