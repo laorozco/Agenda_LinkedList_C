@@ -157,7 +157,7 @@ void forward(list* l) //Move cursor to next
 void printList(list* l){//Print list.
     setCursor(l,getHead(l)); //Set cursor to head of list.
 
-    while(getCursor(l) != NULL){ 
+    for(int i = 0; i < getEntries(l); i++){ 
         
         printf("\n Name: "); 
         for(int i = 0; i < 20; i++){ //Print char array 'name'
@@ -174,13 +174,20 @@ void printList(list* l){//Print list.
             printf("%c", getCursor(l) -> phone[i]); //Print char array 'phone'
         }
         
-        forward(l); //Move current
-        
+        forward(l); //Move current 
     }
 }
 
 void printEntries(list* l){ //Print L's entries.
-    printf("There are %i contacts in the list.\n", l -> entries);
+    if(getEntries(l) < 1){
+        printf("There are no entries in the list.\n");
+    }
+    if (getEntries(l) == 1){
+        printf("There is 1 contact in the list.\n");
+    }
+    else{
+        printf("There are %i contacts in the list.\n", l -> entries);
+    }
 }
 
 
