@@ -18,7 +18,7 @@ node* newNode(char name[], char b[], char p[]){
 		n -> phone[i] = p[i];
 	}
 	
-	return n; //ALWAYS RETURN data type
+	return n; 
 }
 
 void  setName(node* n, char name[])
@@ -88,7 +88,7 @@ void addNode(list* l, node* n){ //Push
 	if(getEntries(l) == 0){
 		setHead(l,n);
 		setTail(l,n);
-		setCursor(l,n);
+		// setCursor(l,n); //REMOVED TO MATCH LL SOLUTION
 
 		l -> entries++;
 		return;
@@ -104,11 +104,12 @@ void addNode(list* l, node* n){ //Push
 void addNodeAt(list* l, node* n, int i) //Insert after i
 {
 	if(i == 0){ //if desired index is begining of list and list is empty.
-		setNext(n, getHead(l)); //Make n's next the current head
-
+		
+        setNext(n, getHead(l)); //Make n's next the current head
 		setHead(l,n); //point the head to n
-		setTail(l,n); 
-		setCursor(l,n);
+		
+        //setTail(l,n); //REMOVED TO MATCH LL SOLUTION 
+		// setCursor(l,n); //REMOVED TO MATCH LL SOLUTION 
 
 		l -> entries++;
 		return;
@@ -152,7 +153,7 @@ void forward(list* l) //Move cursor to next
 		l -> cursor = getNext(getCursor(l));
 	}
 }
-
+/*PROJECT METHODS --------------------------------------------------------------*/
 void printList(list* l){//Print list.
     setCursor(l,getHead(l)); //Set cursor to head of list.
 
@@ -176,6 +177,10 @@ void printList(list* l){//Print list.
         forward(l); //Move current
         
     }
+}
+
+void printEntries(list* l){ //Print L's entries.
+    printf("There are %i contacts in the list.\n", l -> entries);
 }
 
 

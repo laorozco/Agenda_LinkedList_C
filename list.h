@@ -38,6 +38,12 @@ void setCursor(list* l, node* n);
 void addNode(list* l, node* n);
 void addNodeAt(list* l, node* n, int i);
 
+
+/*NEW FUNCTIONS -------------------------------*/
+void printList(list* l);
+void printEntries(list* l);
+/*---------------------------------------------*/
+
 node* getHead(list* l);
 node* getTail(list* l);
 node* getCursor(list* l);
