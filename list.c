@@ -6,7 +6,7 @@
 node* newNode(char name[], char b[], char p[]){
 	node* n = (node*)malloc(sizeof(node)); //malloc returns void pointer, we cast it to node pointer
 	
-	for(int i = 0; i < 20; i++){ //Copy given char array to n's char array.
+	for(int i = 0; i < 20; i++){ //Copy given char array to n's char array, since there cannot be an assigment to a character array.
 		n -> name[i] = name[i];
 	}
 
@@ -47,7 +47,7 @@ void  setNext(node* n, node* nx)
 	n->next = (struct node*)nx;
 }
 
-char*  getName(node* n) //NEED TO CHANGE RETURN TYPE
+char*  getName(node* n) //MIGHT NEED TO CHANGE RETURN TYPE OF GETTERS
 {
 	return n->name;
 }
@@ -101,34 +101,27 @@ void addNode(list* l, node* n){ //Push
 }
 
 
-
-/*void addNode(list* l, node* n){ //Push
-	setNext(getTail(l), n); 
-	setTail(l,n);
-	l -> entries++;
-}*/
-
 void addNodeAt(list* l, node* n, int i) //Insert after i
 {
-	if(i == 0){
-		setNext(n, getHead(l));
+	if(i == 0){ //if desired index is begining of list and list is empty.
+		setNext(n, getHead(l)); //Make n's next the current head
 
-		setHead(l,n);
-		setTail(l,n);
+		setHead(l,n); //point the head to n
+		setTail(l,n); 
 		setCursor(l,n);
 
 		l -> entries++;
 		return;
 	}
 
-	setCursor(l, getHead(l));
+	setCursor(l, getHead(l)); //Make cursor point to begining of list
 	
-	for(int e = 0; e < i; e++){
+	for(int e = 0; e < i; e++){ //move cursor until reaching i
 		forward(l);
 	}
 
-	setNext(n, getNext(getCursor(l)));
-	setNext(getCursor(l), n);
+	setNext(n, getNext(getCursor(l))); //make n's next the next element of the current index
+	setNext(getCursor(l), n); 
 	l -> entries++;
 
 }
@@ -153,11 +146,36 @@ unsigned int getEntries(list* l)
 	return l->entries;
 }
 
-void forward(list* l)
+void forward(list* l) //Move cursor to next
 {
-	if(getNext(getCursor(l)) != NULL){
+	if(getNext(getCursor(l)) != NULL){ //If cursor next is not null, move it.
 		l -> cursor = getNext(getCursor(l));
 	}
+}
+
+void printList(list* l){//Print list.
+    setCursor(l,getHead(l)); //Set cursor to head of list.
+
+    while(getCursor(l) != NULL){ 
+        
+        printf("\n Name: "); 
+        for(int i = 0; i < 20; i++){ //Print char array 'name'
+            printf("%c", getCursor(l) -> name[i]);
+        }
+
+        printf("\n Birthday: ");
+        for(int i = 0; i < 8; i++){ //Print char array 'bday'
+            printf("%c", getCursor(l) -> bday[i]);
+        }
+
+        printf("\n Phone: ");
+        for(int i = 0; i < 10; i++){
+            printf("%c", getCursor(l) -> phone[i]); //Print char array 'phone'
+        }
+        
+        forward(l); //Move current
+        
+    }
 }
 
 

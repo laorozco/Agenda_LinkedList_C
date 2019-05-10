@@ -3,11 +3,9 @@
 
 typedef struct
 {
-    // char grade;
-    // int  score;
-    char name[20];
-    char bday[8];
-    char phone[10];
+    char name[20]; //Members of the contact.
+    char bday[8]; //31122000 format
+    char phone[10]; //9151234567 format
 	
 	struct node* next;
 } node;
@@ -23,12 +21,12 @@ typedef struct
 
 //Node Functions
 node* newNode(char name[], char b[], char p[]);
-void  setName(node* n, char name[]);
+void  setName(node* n, char name[]); //Names changed to match list.c ; 'name' used because 'n' is used by node*.
 void  setBday(node* n, char b[]);
 void  setPhone(node* n, char p[]);
 void  setNext(node* n, node* nx);
 
-char*  getName(node* n); //RETURN TYPES MIGHT NOT BE CORRECT
+char*  getName(node* n); //RETURN TYPES OF GETTERS MIGHT NOT BE CORRECT
 char*  getBday(node* n);
 char*  getPhone(node* n);
 node* getNext(node* n);
