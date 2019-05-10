@@ -7,8 +7,14 @@ node* newNode(char name[], char b[], char p[]){
 	node* n = (node*)malloc(sizeof(node)); //malloc returns void pointer, we cast it to node pointer
 	
 	for(int i = 0; i < 20; i++){ //Copy given char array to n's char array, since there cannot be an assigment to a character array.
-		n -> name[i] = name[i];
+        n -> name[i] = name[i];
 	}
+    
+    for(int i = 0; i < 20; i++){ //Fill up the empty indexes of the array with spaces.
+        if(n -> name[i] == '/0'){
+            n -> name[i] = " ";
+        }
+    }
 
 	for(int i = 0; i < 8; i++){
 		n -> bday[i] = b[i];
@@ -187,6 +193,53 @@ void printEntries(list* l){ //Print L's entries.
     }
     else{
         printf("There are %i contacts in the list.\n", l -> entries);
+    }
+}
+
+void printAll(node* n){
+    
+    printf("\n Name: "); 
+    for(int i = 0; i < 20; i++){ //Print char array 'name'
+        printf("%c", n -> name[i]);
+    }
+
+    printf("\n Birthday: ");
+    for(int i = 0; i < 8; i++){ //Print char array 'bday'
+        printf("%c", n -> bday[i]);
+    }
+
+    printf("\n Phone: ");
+    for(int i = 0; i < 10; i++){
+        printf("%c", n -> phone[i]); //Print char array 'phone'
+    }
+}
+
+void printMember(node* n, char choice){ //Prints 'A' all contact info of a node; 'N' name, 'B' Birthday; 'P' phone.
+    (choice == 'A' ? printAll(n)   : printf(' ')); //Conditonal Operator
+    (choice == 'N' ? printName(n)  : printf(' '));
+    (choice == 'B' ? printBday(n)  : printf(' '));
+    (choice == 'P' ? printPhone(n) : printf(' '));
+
+}
+
+void printName(node* n){
+    printf("\n Name: "); 
+    for(int i = 0; i < 20; i++){ //Print char array 'name'
+        printf("%c", n -> name[i]);
+    }
+}
+
+void printBday(node* n){
+    printf("\n Birthday: ");
+    for(int i = 0; i < 8; i++){ //Print char array 'bday'
+        printf("%c", n -> bday[i]);
+    } 
+}
+
+void printPhone(node* n){
+    printf("\n Phone: ");
+    for(int i = 0; i < 10; i++){
+        printf("%c", n -> phone[i]); //Print char array 'phone'
     }
 }
 
