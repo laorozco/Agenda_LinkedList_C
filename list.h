@@ -22,13 +22,13 @@ typedef struct
 } list;
 
 //Node Functions
-node* newNode(char n[], char b[], char p[]);
-void  setName(node* n, char n[]);
+node* newNode(char name[], char b[], char p[]);
+void  setName(node* n, char name[]);
 void  setBday(node* n, char b[]);
-void  setPhone(node* n, char p[])
+void  setPhone(node* n, char p[]);
 void  setNext(node* n, node* nx);
 
-char*  getName(node* n);
+char*  getName(node* n); //RETURN TYPES MIGHT NOT BE CORRECT
 char*  getBday(node* n);
 char*  getPhone(node* n);
 node* getNext(node* n);

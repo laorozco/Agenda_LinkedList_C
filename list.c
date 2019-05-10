@@ -47,17 +47,17 @@ void  setNext(node* n, node* nx)
 	n->next = (struct node*)nx;
 }
 
-char  getName(node* n) //NEED TO CHANGE RETURN TYPE
+char*  getName(node* n) //NEED TO CHANGE RETURN TYPE
 {
 	return n->name;
 }
 
-char   getBday(node* n)
+char*   getBday(node* n)
 {
 	return n-> bday;
 }
 
-char   getPhone(node* n)
+char*   getPhone(node* n)
 {
 	return n-> phone;
 }
